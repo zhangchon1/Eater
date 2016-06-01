@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- CSS
+        ================================================ -->
+        <!-- Owl Carousel -->
+		<link rel="stylesheet" href="css/owl.carousel.css">
+        <!-- bootstrap.min css -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- Font-awesome.min css -->
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="css/animate.min.css">
+
+		<link rel="stylesheet" href="css/main.css">
+        <!-- Responsive Stylesheet -->
+		<link rel="stylesheet" href="css/responsive.css">
+        <!-- new -->
+        <link rel="stylesheet" href="css/style.css">
+		<!-- Js -->
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="js/jquery.nav.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- new -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.imagesloaded.min.js"></script>
+    <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+
+
+	</head>
+	<body>
+	<!--
+	header-img start 
+	============================== -->
+    <section id="hero-area">
+      <img class="img-responsive" src="images/header.jpg" alt="">
+    </section>
+	<!--
+    Header start 
+	============================== -->
+	<nav id="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <nav class="navbar navbar-default">
+                          <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                              </button>
+                                  <a class="navbar-brand" href="#">
+                                    <img src="images/logo.png" alt="Logo">
+                                  </a>
+
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                              <ul class="nav navbar-nav navbar-right" id="top-nav">
+                                <li><a href="chat.html">Home</a></li>
+                                <li><a href="#contact-us">contacts</a></li>
+                              </ul>
+                            </div><!-- /.navbar-collapse -->
+                          </div><!-- /.container-fluid -->
+                        </nav>
+                    </div>
+                </div><!-- .col-md-12 close -->
+            </div><!-- .row close -->
+        </div><!-- .container close -->
+	</nav><!-- header close -->
+    
+    <div class="container">
+  <header>
+        <img src="images/wwww.jpg" style="width: 100%;height: auto;display: block;" alt="">
+  </header>
+
+<div class="row ">
+    <br /><br />
+    <div class="col-md-12">
+        <div class="panel panel-info" style="border: none;">
+            <div class="panel-heading" style="background-color: #ff530a;color: #fff;">
+                MESSAGES WILL DISAPPEAR WITHIN 24 HOURS
+            </div>
+            <div class="panel-body">
+
+  <div class='example-chat-toolbar'>
+    <label for="nameInput">Username:</label>
+    <input type='text' id='nameInput' placeholder='enter a username...'>
+  </div>
+
+  <ul id='example-messages' class="example-chat-messages"></ul>
+
+  <footer>
+       <div class="panel-footer" style="border-top: none;border-radius: 4px;background-color: #feb8a4">
+    <input type='text' id='messageInput'  placeholder='Type a message...' style="width: 100%;height: 50px;border-radius: 10px;border: none;outline: none;padding-left: 10px;font-size: 20px;">
+  </footer>
+</div>
+
+<!-- CHAT JAVACRIPT -->
+<script>
+  // CREATE A REFERENCE TO FIREBASE
+  var messagesRef = new Firebase('https://12151316.firebaseio.com/');
+
+  // REGISTER DOM ELEMENTS
+  var messageField = $('#messageInput');
+  var nameField = $('#nameInput');
+  var messageList = $('#example-messages');
+
+  // LISTEN FOR KEYPRESS EVENT
+  messageField.keypress(function (e) {
+    if (e.keyCode == 13) {
+      //FIELD VALUES
+      var username = nameField.val();
+      var message = messageField.val();
+
+      //SAVE DATA TO FIREBASE AND EMPTY FIELD
+      messagesRef.push({name:username, text:message});
+      messageField.val('');
+    }
+  });
+
+  // Add a callback that is triggered for each chat message.
+  messagesRef.limitToLast(10).on('child_added', function (snapshot) {
+    //GET DATA
+    var data = snapshot.val();
+    var username = data.name || "anonymous";
+    var message = data.text;
+
+    //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
+    var messageElement = $("<li>");
+    var nameElement = $("<strong class='example-chat-username'></strong>")
+    nameElement.text(username);
+    messageElement.text(message).prepend(nameElement);
+
+    //ADD MESSAGE
+    messageList.append(messageElement)
+
+    //SCROLL TO BOTTOM OF MESSAGE LIST
+    messageList[0].scrollTop = messageList[0].scrollHeight;
+  });
+</script>
+   
+    <!--
+    CONTACT US  start
+    ============================= -->
+    <section id="contact-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h1 class="heading wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms"><span>CONTACT US</span></h1>
+                        <h3 class="title wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">Sign Up for <span>Email Alerts</span> </h3>
+                        <form>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="600ms">
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Write your full name here...">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="800ms">
+                                <input type="text" class="form-control" placeholder="Write your email address here...">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1000ms">
+                                <textarea class="form-control" rows="3" placeholder="Write your message here..."></textarea>
+                            </div>
+                        </form>
+                        <a class="btn btn-default wow bounceIn" data-wow-duration="500ms" data-wow-delay="1300ms" href="#" role="button">send your message</a>
+                    </div>
+                </div><!-- .col-md-12 close -->
+            </div><!-- .row close -->
+        </div><!-- .container close -->
+    </section><!-- #contact-us close -->
+    <!--
+    footer  start
+    ============================= -->
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="block wow fadeInLeft"  data-wow-delay="200ms">
+                        <h3>CONTACT <span>INFO</span></h3>
+                        <div class="info">
+                            <ul>
+                                <li>
+                                 <h4><i class="fa fa-phone"></i>Phone</h4>
+                                  <p>021 123456</p>
+                                    
+                                </li>
+                                <li>
+                                  <h4><i class="fa fa-map-marker"></i>Address</h4>
+                                  <p>Unit X, Somewhere Road, Welington, 60xx</p>
+                                </li>
+                                <li>
+                                  <h4><i class="fa fa-envelope"></i>E mail</h4>
+                                  <p>Aabb0522@gmail.com</p>
+                                  
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="block wow fadeInLeft"  data-wow-delay="1100ms">
+                    </div>
+                </div>
+                <!-- .col-md-4 close -->
+            </div><!-- .row close -->
+        </div><!-- .containe close -->
+    </section><!-- #footer close -->
+    <!--
+    footer-bottom  start
+    ============================= -->
+    <footer id="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="block">
+                        <p>Copyright &copy; 2014 - All Rights Reserved.More</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+<!-- CHAT JAVACRIPT -->
+<script>
+  // CREATE A REFERENCE TO FIREBASE
+  var messagesRef = new Firebase('https://12151316.firebaseio.com/');
+
+  // REGISTER DOM ELEMENTS
+  var messageField = $('#messageInput');
+  var nameField = $('#nameInput');
+  var messageList = $('#example-messages');
+
+  // LISTEN FOR KEYPRESS EVENT
+  messageField.keypress(function (e) {
+    if (e.keyCode == 13) {
+      //FIELD VALUES
+      var username = nameField.val();
+      var message = messageField.val();
+
+      //SAVE DATA TO FIREBASE AND EMPTY FIELD
+      messagesRef.push({name:username, text:message});
+      messageField.val('');
+    }
+  });
+
+  // Add a callback that is triggered for each chat message.
+  messagesRef.limitToLast(10).on('child_added', function (snapshot) {
+    //GET DATA
+    var data = snapshot.val();
+    var username = data.name || "anonymous";
+    var message = data.text;
+
+    //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
+    var messageElement = $("<li>");
+    var nameElement = $("<strong class='example-chat-username'></strong>")
+    nameElement.text(username);
+    messageElement.text(message).prepend(nameElement);
+
+    //ADD MESSAGE
+    messageList.append(messageElement)
+
+    //SCROLL TO BOTTOM OF MESSAGE LIST
+    messageList[0].scrollTop = messageList[0].scrollHeight;
+  });
+</script>
+
+	</body>
+</html>
